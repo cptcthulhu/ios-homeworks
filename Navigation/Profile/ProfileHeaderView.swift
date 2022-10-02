@@ -23,9 +23,10 @@ class ProfileHeaderView: UIView {
         button.layer.shadowOpacity = 0.7
         
         button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        
         return button
+        
     }()
+    
     
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -36,6 +37,7 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
+    
     private let statusLabel: UILabel = {
         let label = UILabel()
         label.text = "Waiting for Something"
@@ -45,49 +47,52 @@ class ProfileHeaderView: UIView {
         return label
     }()
     
+    
     private let profileImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 16, y: 16, width: 100, height: 100))
+        let image = UIImageView()
         image.image = UIImage(named: "cat")
         image.layer.cornerRadius = 50
         image.layer.masksToBounds = true
         image.layer.borderWidth = 3
         image.layer.borderColor = UIColor.white.cgColor
+        image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
+    
     private lazy var textField : UITextField = {
-
-        let textField = UITextField(frame: CGRect(x: 150, y: 96, width: 220, height: 40))
-      
+        let textField = UITextField()
         textField.placeholder = "  Enter text here"
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 14
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.black.cgColor
         textField.font = UIFont(name: "HelveticaNeue", size: 15.0)
-        
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
         textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
-       
         return textField
     }()
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubviews()
+        addingSubviews()
         addingConstraints()
     }
+    
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
+    
     @objc func statusTextChanged(_ textField: UITextField){
         if let i = textField.text {
             statusText = i
         }
-        
     }
+    
     
     @objc private func didTapButton() {
         if statusText != "" {
@@ -95,7 +100,8 @@ class ProfileHeaderView: UIView {
         } else {statusLabel.text  = "Put Some Words In It First!"}
     }
     
-    func addSubviews () {
+    
+    func addingSubviews() {
         addSubview(statusButton)
         addSubview(nameLabel)
         addSubview(profileImage)
@@ -103,10 +109,11 @@ class ProfileHeaderView: UIView {
         addSubview(textField)
     }
     
+    
     func addingConstraints () {
         NSLayoutConstraint.activate([
             
-            statusButton.topAnchor.constraint(equalTo:self.profileImage.bottomAnchor, constant: 32),
+            statusButton.topAnchor.constraint(equalTo: self.profileImage.bottomAnchor, constant: 32),
             statusButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             statusButton.heightAnchor.constraint(equalToConstant: 50),
             statusButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -116,7 +123,18 @@ class ProfileHeaderView: UIView {
             
             statusLabel.bottomAnchor.constraint(equalTo: self.statusButton.topAnchor, constant: -55),
             statusLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 34),
-            statusLabel.leadingAnchor.constraint(equalTo: self.profileImage.trailingAnchor, constant: 34)
+            statusLabel.leadingAnchor.constraint(equalTo: self.profileImage.trailingAnchor, constant: 34),
+            statusLabel.leadingAnchor.constraint(equalTo: self.profileImage.trailingAnchor, constant: 34),
+            
+            profileImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 16),
+            profileImage.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            profileImage.heightAnchor.constraint(equalToConstant: 100),
+            profileImage.widthAnchor.constraint(equalToConstant: 100),
+            
+            textField.heightAnchor.constraint(equalToConstant: 40),
+            textField.widthAnchor.constraint(equalToConstant: 220),
+            textField.leadingAnchor.constraint(equalTo: self.profileImage.trailingAnchor, constant: 34),
+            textField.topAnchor.constraint(equalTo: self.statusLabel.bottomAnchor, constant: 4)
             
         ])
     }

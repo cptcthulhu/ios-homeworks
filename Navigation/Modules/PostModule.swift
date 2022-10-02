@@ -13,7 +13,10 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGray2
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(self.didTapButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add",
+                                                             style: .plain,
+                                                             target: self,
+                                                             action: #selector(self.didTapButton))
     }
     
     override func viewWillAppear(_ animated: Bool) {
