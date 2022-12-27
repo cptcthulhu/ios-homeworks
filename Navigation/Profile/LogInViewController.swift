@@ -29,7 +29,6 @@ class LoginViewController: UIViewController {
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
         loginTextField.placeholder = "   Email or Phone Number"
         loginTextField.clearButtonMode = .whileEditing
-        //   loginTextField.delegate = self
         return loginTextField
     }()
 
@@ -45,7 +44,6 @@ class LoginViewController: UIViewController {
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "   Enter Password"
         passwordTextField.isSecureTextEntry = true
-        //    passwordTextField.delegate = self
         passwordTextField.clearButtonMode = .whileEditing
         return passwordTextField
     }()
@@ -113,7 +111,7 @@ class LoginViewController: UIViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
 
-            let loginButtonBottomPointY = self.button.frame.origin.y + self.button.frame.height + self.button.frame.height // self.button.frame.origin.y - положение относительно супервью - self.stackView - поэтому прибавляем положение стека.
+            let loginButtonBottomPointY = self.button.frame.origin.y + self.button.frame.height + self.button.frame.height
             let keyboardOriginY = self.view.frame.height - keyboardHeight
 
             let yOffset = keyboardOriginY < loginButtonBottomPointY
@@ -125,26 +123,7 @@ class LoginViewController: UIViewController {
             self.scrollView.contentOffset = CGPoint(x: 0, y: yOffset)
         }
     }
- /*  @objc func didShowKeyboard(_ notification: Notification) {
-        print("show keyboard")
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
 
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-
-            let loginButtonBottomPointY = self.button.frame.origin.y + button.frame.height
-
-            let keyboardOriginY = self.view.frame.height - keyboardHeight
-
-            let yOffset = keyboardOriginY < loginButtonBottomPointY
-            ? loginButtonBottomPointY - keyboardOriginY + 16
-            : 0
-
-            print("🍋 \(loginButtonBottomPointY), \(keyboardOriginY)")
-
-            self.scrollView.contentOffset = CGPoint(x: 0, y: yOffset)
-        }
-    } */
 
     @objc func didHideKeyboard(_ notification: Notification) {
         self.forcedHidingKeyboard()
@@ -153,7 +132,7 @@ class LoginViewController: UIViewController {
     @objc private func forcedHidingKeyboard() {
         self.view.endEditing(true)
         self.scrollView.setContentOffset(.zero, animated: true)
-        //self.scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    
     }
 
 
