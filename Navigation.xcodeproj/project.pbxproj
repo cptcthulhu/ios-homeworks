@@ -13,11 +13,12 @@
 		2C03F71628DB4B0600948D9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C03F71428DB4B0600948D9C /* Main.storyboard */; };
 		2C03F71828DB4B0A00948D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C03F71728DB4B0A00948D9C /* Assets.xcassets */; };
 		2C03F71B28DB4B0A00948D9C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C03F71928DB4B0A00948D9C /* LaunchScreen.storyboard */; };
-		2C03F72828DB547B00948D9C /* FeedModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C03F72728DB547B00948D9C /* FeedModule.swift */; };
 		2C03F72A28DB549B00948D9C /* PostModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C03F72928DB549B00948D9C /* PostModule.swift */; };
 		2C03F72C28DB54AC00948D9C /* InfoModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C03F72B28DB54AC00948D9C /* InfoModule.swift */; };
 		2C318A0D28E25D6200FD4FBB /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C318A0C28E25D6200FD4FBB /* ProfileHeaderView.swift */; };
 		2C318A0F28E25F9400FD4FBB /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C318A0E28E25F9300FD4FBB /* ProfileViewController.swift */; };
+		2C31FD7329564177001363A6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C31FD7229564177001363A6 /* LogInViewController.swift */; };
+		2C3A51A7295654CA00C2BF44 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3A51A6295654CA00C2BF44 /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,11 +30,12 @@
 		2C03F71728DB4B0A00948D9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C03F71A28DB4B0A00948D9C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C03F71C28DB4B0A00948D9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2C03F72728DB547B00948D9C /* FeedModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModule.swift; sourceTree = "<group>"; };
 		2C03F72928DB549B00948D9C /* PostModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModule.swift; sourceTree = "<group>"; };
 		2C03F72B28DB54AC00948D9C /* InfoModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoModule.swift; sourceTree = "<group>"; };
 		2C318A0C28E25D6200FD4FBB /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		2C318A0E28E25F9300FD4FBB /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2C31FD7229564177001363A6 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		2C3A51A6295654CA00C2BF44 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +92,6 @@
 		2C03F72528DB53FE00948D9C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				2C03F72728DB547B00948D9C /* FeedModule.swift */,
 				2C03F72928DB549B00948D9C /* PostModule.swift */,
 				2C03F72B28DB54AC00948D9C /* InfoModule.swift */,
 			);
@@ -101,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				2C03F71228DB4B0600948D9C /* ViewController.swift */,
+				2C3A51A6295654CA00C2BF44 /* FeedViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -110,6 +112,7 @@
 			children = (
 				2C318A0C28E25D6200FD4FBB /* ProfileHeaderView.swift */,
 				2C318A0E28E25F9300FD4FBB /* ProfileViewController.swift */,
+				2C31FD7229564177001363A6 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -187,7 +190,8 @@
 			files = (
 				2C03F71328DB4B0600948D9C /* ViewController.swift in Sources */,
 				2C03F72C28DB54AC00948D9C /* InfoModule.swift in Sources */,
-				2C03F72828DB547B00948D9C /* FeedModule.swift in Sources */,
+				2C3A51A7295654CA00C2BF44 /* FeedViewController.swift in Sources */,
+				2C31FD7329564177001363A6 /* LogInViewController.swift in Sources */,
 				2C03F72A28DB549B00948D9C /* PostModule.swift in Sources */,
 				2C318A0D28E25D6200FD4FBB /* ProfileHeaderView.swift in Sources */,
 				2C03F70F28DB4B0600948D9C /* AppDelegate.swift in Sources */,

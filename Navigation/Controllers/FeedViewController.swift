@@ -1,8 +1,8 @@
 //
-//  FeedModule.swift
+//  FeedViewController.swift
 //  Navigation
 //
-//  Created by Dmitry Testov on 21.09.2022.
+//  Created by Dmitry Testov on 24.12.2022.
 //
 
 import Foundation
@@ -13,11 +13,13 @@ struct Post {
     var title: String
     
 }
-
 var postTitle = Post(title: "Your New Post")
 
 class FeedViewController: UIViewController {
+
+    // MARK: UI Elements Creation
     
+   
     private lazy var stackView : UIStackView = {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -26,7 +28,8 @@ class FeedViewController: UIViewController {
         stack.alignment = .center
         return stack
     }()
-    
+
+
     private lazy var upperButton: UIButton = {
         let button = UIButton()
         
@@ -37,7 +40,7 @@ class FeedViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
+
     private lazy var bottomButton: UIButton = {
         let button = UIButton()
         button.backgroundColor  = .systemGreen
@@ -47,39 +50,48 @@ class FeedViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+
+    // MARK: Life Cycle Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBlue
+        view.backgroundColor = .systemCyan
         view.addSubview(stackView)
         stackView.addArrangedSubview(upperButton)
         stackView.addArrangedSubview(bottomButton)
         addingConstraints()
+
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-    }
+           super.viewWillAppear(animated)
+           self.navigationController?.navigationBar.prefersLargeTitles = true
+           navBarCustomization()
+
+       }
+
+    // MARK: Customization and Obj-C Runtime Functions
     
     func navBarCustomization () {
         let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .systemBackground
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.brown]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.brown]
-        navigationController?.navigationBar.tintColor = .brown
+        appearance.backgroundColor = UIColor(named: "LightGray")
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
         self.navigationItem.title = "Your Feed"
     }
-    
+
+
     @objc private func didTapButton() {
         let vc = PostViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
+
+
+
     func addingConstraints () {
         NSLayoutConstraint.activate([
 

@@ -28,6 +28,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewDidLoadCustomization()
+        navigationController?.navigationBar.isHidden = false
     }
     
     
