@@ -24,10 +24,11 @@ class LoginViewController: UIViewController {
         return image
     }()
 
-    private lazy var loginTextField: UITextField = {
-        let loginTextField = UITextField()
+    private lazy var loginTextField: TextFieldWithPadding = {
+
+        let loginTextField = TextFieldWithPadding()
         loginTextField.translatesAutoresizingMaskIntoConstraints = false
-        loginTextField.placeholder = "   Email or Phone Number"
+        loginTextField.placeholder = "Email or Phone Number"
         loginTextField.clearButtonMode = .whileEditing
         return loginTextField
     }()
@@ -39,10 +40,11 @@ class LoginViewController: UIViewController {
         return line
     }()
 
-    private lazy var passwordTextField: UITextField = {
-        let passwordTextField = UITextField()
+    private lazy var passwordTextField: TextFieldWithPadding = {
+
+        let passwordTextField = TextFieldWithPadding()
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.placeholder = "   Enter Password"
+        passwordTextField.placeholder = "Enter Password"
         passwordTextField.isSecureTextEntry = true
         passwordTextField.clearButtonMode = .whileEditing
         return passwordTextField
@@ -66,7 +68,8 @@ class LoginViewController: UIViewController {
 
     private lazy var button: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor(named: "VKColorSet")
+        button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
+        //button.backgroundColor = UIColor(named: "VKColorSet")
         button.setTitle("Log In", for: .normal)
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(self.didTapButton), for: .touchUpInside)
@@ -82,9 +85,24 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         addinsViews()
         addingConstraints()
+        navBarCustomization()
     }
 
+    
+    func navBarCustomization () {
+        
+         let appearance = UINavigationBarAppearance()
+         appearance.backgroundColor = UIColor(named: "LightGray")
+         appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "VKColorSet")! ]
+         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "VKColorSet")!]
+         navigationController?.navigationBar.tintColor = UIColor(named: "VKColorSet")
+         navigationController?.navigationBar.standardAppearance = appearance
+         navigationController?.navigationBar.compactAppearance = appearance
+         navigationController?.navigationBar.scrollEdgeAppearance = appearance
 
+     }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(self,
@@ -115,7 +133,7 @@ class LoginViewController: UIViewController {
             let keyboardOriginY = self.view.frame.height - keyboardHeight
 
             let yOffset = keyboardOriginY < loginButtonBottomPointY
-            ? loginButtonBottomPointY - keyboardOriginY + 16
+            ? loginButtonBottomPointY - keyboardOriginY + 32
             : 0
 
             print("🍋 \(self.button.frame.origin.y), \(self.loginTextField.frame.origin.y), \(self.button.frame.origin.y)")

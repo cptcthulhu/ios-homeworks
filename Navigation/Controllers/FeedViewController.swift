@@ -8,12 +8,8 @@
 import Foundation
 import UIKit
 
-struct Post {
-    
-    var title: String
-    
-}
-var postTitle = Post(title: "Your New Post")
+
+var postTitle = "Your New Post"
 
 class FeedViewController: UIViewController {
 
@@ -75,9 +71,9 @@ class FeedViewController: UIViewController {
     func navBarCustomization () {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor(named: "LightGray")
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-        navigationController?.navigationBar.tintColor = .black
+        appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "VKColorSet")!]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "VKColorSet")!]
+        navigationController?.navigationBar.tintColor = UIColor(named: "VKColorSet")
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
