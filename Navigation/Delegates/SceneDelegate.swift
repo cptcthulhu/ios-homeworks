@@ -34,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         feedTabNavigationController.tabBarItem = item1
         profileTabNavigationController.tabBarItem = item2
         
-        UITabBar.appearance().tintColor = UIColor(named: "VKColorSet")
+        UITabBar.appearance().tintColor = UIColor(named: "VKColor")
         UITabBar.appearance().backgroundColor = UIColor(named: "LightGray")
         
         let window = UIWindow(windowScene: windowScene)

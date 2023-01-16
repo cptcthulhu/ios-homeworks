@@ -71,9 +71,9 @@ class FeedViewController: UIViewController {
     func navBarCustomization () {
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor(named: "LightGray")
-        appearance.titleTextAttributes = [.foregroundColor: UIColor(named: "VKColorSet")!]
-        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(named: "VKColorSet")!]
-        navigationController?.navigationBar.tintColor = UIColor(named: "VKColorSet")
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.systemBlue]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.systemBlue]
+        navigationController?.navigationBar.tintColor = UIColor(named: "VKColor")
         navigationController?.navigationBar.standardAppearance = appearance
         navigationController?.navigationBar.compactAppearance = appearance
         navigationController?.navigationBar.scrollEdgeAppearance = appearance

@@ -19,7 +19,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         button.layer.cornerRadius = 14
         button.setTitle("Set Status", for: .normal)
         button.backgroundColor = .systemBlue
-        //button.backgroundColor = UIColor(named: "VKColorSet")
+        button.backgroundColor = UIColor(named: "VKColor")
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.shadowOffset = CGSize(width: 4, height: 4)
         button.layer.cornerRadius = 15
