@@ -85,7 +85,7 @@ class LoginViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         addinsViews()
         addingConstraints()
-        navBarCustomization()
+        //navBarCustomization()
     }
 
     
@@ -177,7 +177,7 @@ class LoginViewController: UIViewController {
 
             scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 
             vkLogo.centerXAnchor.constraint(equalTo: super.view.safeAreaLayoutGuide.centerXAnchor),
