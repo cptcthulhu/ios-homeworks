@@ -1,0 +1,203 @@
+//
+//  LogInViewController.swift
+//  Navigation
+//
+//  Created by Dmitry Testov on 23.12.2022.
+//
+
+import Foundation
+import UIKit
+
+class LoginViewController: UIViewController {
+
+    private lazy var scrollView: UIScrollView = {
+
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
+    private lazy var vkLogo: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "VKImage")
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+
+    private lazy var loginTextField: TextFieldWithPadding = {
+
+        let loginTextField = TextFieldWithPadding()
+        loginTextField.translatesAutoresizingMaskIntoConstraints = false
+        loginTextField.placeholder = "Email or Phone Number"
+        loginTextField.clearButtonMode = .whileEditing
+        return loginTextField
+    }()
+
+    private lazy var separator: UIView = {
+        let line = UIView()
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.backgroundColor = UIColor.lightGray
+        return line
+    }()
+
+    private lazy var passwordTextField: TextFieldWithPadding = {
+
+        let passwordTextField = TextFieldWithPadding()
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordTextField.placeholder = "Enter Password"
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.clearButtonMode = .whileEditing
+        return passwordTextField
+    }()
+
+    private lazy var credentialsStackView: UIStackView = {
+
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 0
+        stackView.layer.cornerRadius = 10
+        stackView.layer.borderColor = UIColor.lightGray.cgColor
+        stackView.layer.borderWidth = 0.5
+        stackView.backgroundColor = .systemGray6
+
+        return stackView
+    }()
+
+
+
+    private lazy var button: UIButton = {
+        let button = UIButton()
+        //button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
+        button.backgroundColor = UIColor(named: "VKColor")
+        button.setTitle("Log In", for: .normal)
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(self.didTapButton), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        self.setupGestures()
+        navigationController?.navigationBar.isHidden = true
+        addinsViews()
+        addingConstraints()
+        //navBarCustomization()
+    }
+
+    
+    func navBarCustomization () {
+        
+         let appearance = UINavigationBarAppearance()
+         appearance.backgroundColor = UIColor(named: "LightGray")
+         appearance.titleTextAttributes = [.foregroundColor: UIColor.systemBlue]
+         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.systemBlue]
+         navigationController?.navigationBar.tintColor = UIColor(named: "VKColor")
+         navigationController?.navigationBar.standardAppearance = appearance
+         navigationController?.navigationBar.compactAppearance = appearance
+         navigationController?.navigationBar.scrollEdgeAppearance = appearance
+
+     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.didShowKeyboard(_:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.didHideKeyboard(_:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    private func setupGestures() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.forcedHidingKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+
+  @objc private func didShowKeyboard(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+
+            let loginButtonBottomPointY = self.button.frame.origin.y + self.button.frame.height + self.button.frame.height
+            let keyboardOriginY = self.view.frame.height - keyboardHeight
+
+            let yOffset = keyboardOriginY < loginButtonBottomPointY
+            ? loginButtonBottomPointY - keyboardOriginY + 32
+            : 0
+
+            print("🍋 \(self.button.frame.origin.y), \(self.loginTextField.frame.origin.y), \(self.button.frame.origin.y)")
+
+            self.scrollView.contentOffset = CGPoint(x: 0, y: yOffset)
+        }
+    }
+
+
+    @objc func didHideKeyboard(_ notification: Notification) {
+        self.forcedHidingKeyboard()
+    }
+
+    @objc private func forcedHidingKeyboard() {
+        self.view.endEditing(true)
+        self.scrollView.setContentOffset(.zero, animated: true)
+    
+    }
+
+
+    @objc private func didTapButton() {
+        let vc = ProfileViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    private func addinsViews(){
+
+        view.addSubview(scrollView)
+        scrollView.addSubview(vkLogo)
+        credentialsStackView.addArrangedSubview(loginTextField)
+        credentialsStackView.addArrangedSubview(separator)
+        credentialsStackView.addArrangedSubview(passwordTextField)
+        scrollView.addSubview(credentialsStackView)
+        scrollView.addSubview(button)
+    }
+    
+   
+
+    func addingConstraints () {
+        NSLayoutConstraint.activate([
+
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+
+            vkLogo.centerXAnchor.constraint(equalTo: super.view.safeAreaLayoutGuide.centerXAnchor),
+            vkLogo.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 120),
+            vkLogo.heightAnchor.constraint(equalToConstant: 100),
+            vkLogo.widthAnchor.constraint(equalToConstant: 100),
+
+            credentialsStackView.topAnchor.constraint(equalTo: vkLogo.bottomAnchor, constant: 120),
+            credentialsStackView.centerXAnchor.constraint(equalTo: super.view.safeAreaLayoutGuide.centerXAnchor),
+            credentialsStackView.leadingAnchor.constraint(equalTo: super.view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+
+            loginTextField.heightAnchor.constraint(equalToConstant: 50),
+            separator.heightAnchor.constraint(equalToConstant: 0.5),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 50),
+
+            button.heightAnchor.constraint(equalToConstant: 50),
+            button.centerXAnchor.constraint(equalTo: super.view.safeAreaLayoutGuide.centerXAnchor),
+            button.topAnchor.constraint(equalTo: credentialsStackView.bottomAnchor, constant: 16),
+            button.leadingAnchor.constraint(equalTo: super.view.leadingAnchor, constant: 16)
+
+        ])
+    }
+}
