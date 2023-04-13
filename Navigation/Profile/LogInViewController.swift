@@ -5,8 +5,8 @@
 //  Created by Dmitry Testov on 23.12.2022.
 //
 
-import Foundation
 import UIKit
+import StorageService
 
 class LoginViewController: UIViewController {
 
@@ -80,7 +80,11 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        #if DEBUG
+        view.backgroundColor = .systemCyan
+        #else
         view.backgroundColor = .white
+        #endif
         self.setupGestures()
         navigationController?.navigationBar.isHidden = true
         addinsViews()

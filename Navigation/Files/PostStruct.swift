@@ -5,16 +5,15 @@
 //  Created by Dmitry Testov on 28.12.2022.
 //
 
-import Foundation
 import UIKit
 
-struct Post {
+public struct Post {
 
-    var author: String
-    var description: String
-    var image: String
-    var likes: Int
-    var views: Int
+    public var author: String
+    public var description: String
+    public var image: String
+    public var likes: Int
+    public var views: Int
 
 }
 
@@ -24,4 +23,4 @@ var post2 = Post(author: "Как нейросети видят русских?",
 
 var post3 = Post(author: "40 лучших игр 2022 года", description: "Portal Companion Collection на первом месте.", image: "IMG-4", likes: 300, views: 700)
 
-var viewModel = [post1, post2, post3]
+public var viewModel = [post1, post2, post3]
