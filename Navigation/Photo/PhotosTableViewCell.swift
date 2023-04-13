@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StorageService
 
 let smallCollection = ["IMG-5", "IMG-6", "IMG-7", "IMG-8"]
 
