@@ -5,8 +5,8 @@
 //  Created by Dmitry Testov on 31.12.2022.
 //
 
-import Foundation
 import UIKit
+import StorageService
 
 class PostViewController: UIViewController {
     

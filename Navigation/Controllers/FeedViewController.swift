@@ -5,9 +5,9 @@
 //  Created by Dmitry Testov on 24.12.2022.
 //
 
-import Foundation
-import UIKit
 
+import UIKit
+import StorageService
 
 var postTitle = "Your New Post"
 

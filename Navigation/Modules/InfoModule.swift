@@ -5,8 +5,8 @@
 //  Created by Dmitry Testov on 21.09.2022.
 //
 
-import Foundation
 import UIKit
+import StorageService
 
 class InfoViewController: UIViewController {
     
